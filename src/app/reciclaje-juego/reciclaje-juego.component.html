@@ -1,0 +1,52 @@
+<!-- Canvas del juego -->
+<div #canvasContainer class="game-canvas"></div>
+
+<!-- Overlay encima del juego -->
+<div class="overlay">
+  <!-- Puntos arriba a la izquierda -->
+  <div class="score">
+    Puntos: {{ score }}
+  </div>
+<!-- Botones para abrir/cerrar menús -->
+  <div class="top-right-buttons">
+    <button (click)="toggleInstructions()">Instrucciones</button>
+    <button (click)="toggleSettings()">Ajustes</button>
+  </div>
+
+  <!-- Menú plegable de instrucciones -->
+  <div class="side-panel left" [class.open]="showInstructions">
+    <h3>Instrucciones</h3>
+    <ul>
+      <li>W / ↑: avanzar</li>
+      <li>S / ↓: retroceder</li>
+      <li>A / ←: girar izquierda</li>
+      <li>D / →: girar derecha</li>
+      <li>E: recoger basura / reciclar</li>
+      <li>Coloca cada basura en el contenedor correcto.</li>
+      <li>Llega a 5 puntos para ganar. Si bajas a -2, pierdes.</li>
+    </ul>
+  </div>
+    <!-- Menú plegable de ajustes -->
+  <div class="side-panel right" [class.open]="showSettings">
+    <h3>Ajustes</h3>
+    <p>(Aquí luego puedes agregar volumen, sensibilidad de cámara, etc.)</p>
+  </div>
+
+  <!-- Cuadro de ganar / perder en el centro -->
+  <div class="result-box" *ngIf="showWinMenu || showLoseMenu">
+    <h2 *ngIf="showWinMenu">¡Ganaste! 🌱</h2>
+    <h2 *ngIf="showLoseMenu">Perdiste 😢</h2>
+
+    <p *ngIf="showWinMenu">Llegaste a 5 puntos. ¡Buen reciclaje!</p>
+    <p *ngIf="showLoseMenu">Bajaste hasta -2 puntos.</p>
+
+    <button (click)="restartGame()">Jugar de nuevo</button>
+  </div>
+</div>
+
+  
+
+
+  
+
+
